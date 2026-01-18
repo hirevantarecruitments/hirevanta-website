@@ -130,6 +130,54 @@ button {
   border-radius: 12px;
   overflow: hidden;
 }
+  .whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+.whatsapp-float img {
+  width: 32px;
+  height: 32px;
+}
+  /* CLICK RIPPLE EFFECT */
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background: rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* SCROLL FADE + LIFT EFFECT */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
   </style>
 </head>
 <body>
@@ -143,7 +191,7 @@ button {
   </div>
 </header>
 
-<section class="about">
+<section class="about fade-section">
   <h2>Who We Are</h2>
   <p>
     HireVanta Recruitment Services is a Delhi NCR based recruitment firm
@@ -151,7 +199,7 @@ button {
     for startups and growing businesses.
   </p>
 </section>
-<section class="process">
+<section class="process fade-section">
   <h2>Our Recruitment Process</h2>
   <p>
     At HireVanta Recruitment Services, we follow a structured and transparent hiring
@@ -167,7 +215,7 @@ button {
     <li><strong>Post-Joining Support:</strong> Replacement support as per agreed terms.</li>
   </ul>
 </section>
-  <section class="industries">
+  <section class="industries fade-section">
   <h2>Industries We Serve</h2>
   <p>
     We cater to startups, SMEs, and growing organizations across multiple industries,
@@ -183,7 +231,7 @@ button {
     <div class="card">Operations & Administration</div>
   </div>
 </section>
-<section class="services">
+<section class="services fade-section">
   <h2>Our Services</h2>
   <div class="cards">
     <div class="card">Permanent Staffing</div>
@@ -193,7 +241,7 @@ button {
   </div>
 </section>
 
-<section class="trust">
+<section class="trust fade-section">
   <h2>Why HireVanta Recruitment Services</h2>
 
   <ul>
@@ -210,7 +258,7 @@ button {
     by delivering reliable hiring outcomes that help businesses scale confidently.
   </p>
 </section>
-<section id="contact" class="contact">
+<section id="contact" class="contact fade-section">
   <h2>Contact Us</h2>
 
   <form name="hirevanta-contact"
@@ -249,5 +297,46 @@ button {
   © 2026 HireVanta Recruitment Services
 </footer>
 
+  <a
+  href="https://wa.me/917982837238?text=Hello%20HireVanta%2C%20I%20have%20a%20hiring%20requirement."
+  class="whatsapp-float"
+  target="_blank"
+>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="Chat on WhatsApp"
+  >
+</a>
+  <script>
+document.addEventListener("click", function (e) {
+  const ripple = document.createElement("span");
+  ripple.className = "click-ripple";
+  ripple.style.left = e.pageX + "px";
+  ripple.style.top = e.pageY + "px";
+  ripple.style.width = ripple.style.height = "20px";
+
+  document.body.appendChild(ripple);
+
+  setTimeout(() => {
+    ripple.remove();
+  }, 600);
+});
+</script>
+  <script>
+const sections = document.querySelectorAll(".fade-section");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+sections.forEach(section => observer.observe(section));
+</script>
 </body>
   </html>
