@@ -526,16 +526,18 @@
     <section id="contact" class="contact fade-section" aria-labelledby="contact-heading">
       <h2 id="contact-heading">Contact Us</h2>
 
-      <form name="hirevanta-contact"
-            method="POST"
-            action="/thank-you.html"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            aria-labelledby="contact-heading">
-        <input type="hidden" name="form-name" value="hirevanta-contact">
-        <div class="hidden-field" aria-hidden="true">
-          <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-        </div>
+     <form
+  name="hirevanta-contact"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+>
+  <input type="hidden" name="form-name" value="hirevanta-contact">
+  <input type="hidden" name="redirect" value="/thank-you.html">
+
+  <div class="hidden-field" aria-hidden="true">
+        <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+  </div>
 
         <label class="sr-only" for="name">Your Name</label>
         <input id="name" type="text" name="name" placeholder="Your Name" required>
