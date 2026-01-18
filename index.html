@@ -29,15 +29,13 @@
     }
 
     .hero {
+  position: relative;
   height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.9)
-    ),
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
     url("recruitment1.png");
   background-size: cover;
   background-position: center;
@@ -112,8 +110,30 @@
       color: #777;
     }
     .logo {
-  width: 220px;
-  margin-bottom: 25px;
+  display: block;
+}
+    .top-bar {
+  position: absolute;
+  top: 28px;
+  left: 40px;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+}
+
+.top-logo {
+  width: 160px;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .top-bar {
+    top: 18px;
+    left: 20px;
+  }
+
+  .top-logo {
+    width: 130px;
+  }
 }
   form {
   max-width: 500px;
