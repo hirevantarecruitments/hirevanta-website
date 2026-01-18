@@ -92,6 +92,39 @@
   width: 220px;
   margin-bottom: 25px;
 }
+  form {
+  max-width: 500px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+button {
+  background: #d4af37;
+  color: #000;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-info {
+  margin-top: 30px;
+  color: #aaa;
+}
   </style>
 </head>
 <body>
@@ -136,7 +169,23 @@
 
 <section id="contact" class="contact">
   <h2>Contact Us</h2>
-  <p>
+
+  <form name="hirevanta-contact" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="hirevanta-contact">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="company" placeholder="Company Name">
+    <textarea name="message" placeholder="Hiring Requirement"></textarea>
+
+    <button type="submit">Submit Requirement</button>
+  </form>
+
+  <p class="contact-info">
+    📍 E-2/24, Bhagya Vihar, Mubarak Pur Dabas, North West Delhi – 110081<br>
+    📧 hirevantarecruitments@gmail.com
+  </p>
+</section>
     📍 E-2/24, Bhagya Vihar, Mubarak Pur Dabas,<br>
     North West Delhi – 110081<br><br>
     📧 hirevantarecruitments@gmail.com
